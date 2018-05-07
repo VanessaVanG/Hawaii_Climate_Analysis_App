@@ -8,7 +8,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-from flask import Flask, jsonify #,render_template
+from flask import Flask, jsonify, render_template
 
 '''DB Setup'''
 
@@ -35,14 +35,7 @@ app = Flask(__name__)
 #index
 @app.route('/')
 def index():
-    return '''Hello! This is the API for Hawaii Climate Data <br>
-You can use the following: <br>
-/api/v1.0/precipitation <br>
-/api/v1.0/stations <br>
-/api/v1.0/tobs <br>
-/api/v1.0/{start date}<br>
-/api/v1.0/{start date}/{end date}<br>
-'''
+    return render_template('climate_index.html')
 
 #precipitation for the last 12 months
 @app.route('/api/v1.0/precipitation')
